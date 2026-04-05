@@ -1,95 +1,123 @@
 <div align="center">
 
 # Priyansh Patel
-### AI Engineer · Computer Vision · Agentic Systems
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/priyansh1221)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:1.priyannsh@gmail.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=github&logoColor=white)](https://priyansh1221.github.io/Priyansh/)
+**AI Engineer who builds things that work in the real world, under real constraints.**
+
+MSc Artificial Intelligence (Distinction) Â· London Met &nbsp;|&nbsp; BE Electronics (Distinction) Â· GTU
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/priyansh-1221)
+[![Email](https://img.shields.io/badge/Email-1.priyannsh%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:1.priyannsh@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-priyansh1221.github.io-000?style=flat-square&logo=github)](https://priyansh1221.github.io/Priyansh/)
 
 </div>
 
 ---
 
-## About Me
+## How I think
 
-AI Engineer with an MSc in Artificial Intelligence (Distinction) from London Metropolitan University and a BE in Electronics & Communication (Distinction) from GTU, India. I build production-grade computer vision systems and agentic AI pipelines — from video understanding models to full-stack business automation tools.
+Most AI work lives in notebooks. Mine ships to real environments with real constraints â devices that might lose internet, businesses that cannot afford cloud bills, security systems where a false alarm at 3am means someone ignores the next real one.
 
-Currently open to AI/ML engineering roles globally.
-
----
-
-## Tech Stack
-
-**AI & ML**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
-
-**Models & Architectures**
-
-![VideoMAE](https://img.shields.io/badge/VideoMAE-black?style=flat-square)
-![SlowFast](https://img.shields.io/badge/SlowFast-black?style=flat-square)
-![YOLOv8](https://img.shields.io/badge/YOLOv8-00FFFF?style=flat-square&logoColor=black)
-![Transformers](https://img.shields.io/badge/Transformers-FFD700?style=flat-square)
-
-**Backend & Infra**
-
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
+My design process starts with **what breaks the system in production**, not what maximises the benchmark. That shapes every technical decision I make.
 
 ---
 
-## Featured Projects
+## Projects
 
-### Chitr — Video Violence Detection System
-> Computer vision pipeline for real-time violence detection in video streams
+### Chitr â Real-Time Loss Prevention Platform
+*2025 â Present*
 
-- Ensemble of **VideoMAE** + **SlowFast** networks achieving **0.941 ROC-AUC**
-- **YOLOv8** for real-time person detection and region-of-interest extraction
-- FastAPI REST backend · PostgreSQL · Dockerized deployment
-- Temporal attention over 16-frame sliding windows
+A multi-model video intelligence system for detecting violence and theft on live CCTV.
 
-[![Repo](https://img.shields.io/badge/View_Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/priyansh1221)
+**The hard problem was not accuracy â it was false alarms.**
+
+Security guards who get 20 false alerts per hour stop trusting the system. I designed explicitly for a 2.7% false alarm rate, not just raw accuracy.
+
+**Why two models?**
+
+VideoMAE (masked autoencoder transformer) understands global context across 16-frame windows. SlowFast R101 has two pathways â one for slow semantic content, one for fast motion bursts. They fail in *different situations*, so ensembling them catches what each misses alone. Result: **0.941 ROC-AUC Â· 93.3% accuracy** on real CCTV footage.
+
+**Why two-stage inference?**
+
+A security guard needs to know *now*, not after a 3-second deep model run. So:
+- YOLOv8 detects each person â instant pose-based heuristic score in **<0.5s**
+- VideoMAE runs asynchronously and updates the confidence score
+
+The guard sees something immediately. The accurate score arrives a moment later.
+
+**Why fully local?**
+
+CCTV footage contains footage of customers. Sending it to any cloud creates legal and privacy liability. The system runs entirely on-site â no data leaves the building.
+
+**Why active learning via PostgreSQL?**
+
+Every human review correction gets written back as a training signal. The model improves from every mistake a reviewer catches. This is the difference between a deployed AI system and a research project.
+
+> Trained model checkpoints exist. This is a live system, not architecture code.
+
+```
+Stack: Python Â· PyTorch Â· VideoMAE Â· SlowFast R101 Â· YOLOv8 Â· FastAPI Â· PostgreSQL Â· OpenCV Â· MLflow
+```
 
 ---
 
-### JalaSai Garage — Auto Repair Management System
-> End-to-end business management system for a two-wheeler garage in Surat, India
+### JalaSai Auto Garage â Production Business System
+*2024 â Present*
 
-- **Zero-dependency** single-file HTML app (no build tools, no npm, no framework)
-- Job tracking, customer database, parts inventory, QR label printing
-- WhatsApp billing integration · Google Sheets sync · Mechanic commission engine
-- Supports Ola Electric, Ather, Honda Activa, Hero Splendor, TVS, Yamaha, Bajaj, Royal Enfield
-- All data persisted in `localStorage` — works offline, no backend needed
+A complete management system for an established two-wheeler repair garage in Surat, Gujarat, India.
 
-[![Repo](https://img.shields.io/badge/View_Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/priyansh1221/JalaSai-Garage)
+**The deployment constraint came first.**
+
+The garage owner needed something that: works on a cheap Android phone, survives power cuts (offline = still works), costs nothing monthly, and can be updated by sending a WhatsApp message with the new file attached.
+
+That constraint â not preference â is why the entire system is a **single HTML file with zero dependencies**.
+
+**The QR encoder problem.**
+
+The garage uses thermal printers for part sticker labels with QR codes. I needed QR generation that worked offline with no external library. I implemented the full **Reed-Solomon error correction + QR matrix encoding** algorithm from scratch in vanilla JS. No npm. No CDN. It lives inside the file.
+
+**The SKU system is designed to be invented, not looked up.**
+
+Every part follows `{BIKE}-{CAT}-{VARIANT}` â e.g. `OLA-BRA-PAD-FRT` for the Ola Electric front brake pad. A mechanic can create a new SKU on the spot without training or a lookup table. The code describes itself.
+
+**WhatsApp over email â because I read the actual user.**
+
+The bill goes out as a WhatsApp message in Hindi/Hinglish, the way a garage owner actually texts a customer. Not a PDF. Not email. A warm, informal message that feels like it came from a person.
+
+**Google Sheets as the backend â because the owner already knows it.**
+
+Rather than building a custom analytics dashboard requiring training, stock changes sync to Google Sheets via Apps Script. The owner already knows how to filter and sort in Sheets.
+
+**Commission on labour only â because that is how garages in India actually work.**
+
+Parts are billed at cost to the customer. A mechanic earns a percentage of their skilled labour, not of the parts they bolt on. I learned this by sitting with the business owner.
+
+```
+Stack: Vanilla HTML Â· CSS Â· JavaScript Â· localStorage Â· BarcodeDetector API Â· Browser Print API
+```
+
+[![View Repo](https://img.shields.io/badge/View_Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/priyansh1221/JalaSai-Garage)
 
 ---
 
 ## Experience
 
-| Role | Company | Type |
-|------|---------|------|
-| Agentic AI Developer | **Labelbox** | Contract |
-| Senior AI Generalist | **Outlier** | Contract |
-| Junior Data Scientist | **D'light Technologies** | Full-time |
-| Technical Analyst Intern | **Deserve Industrial Automation** | Internship |
+| Period | Role | Company |
+|--------|------|---------|
+| Jan 2026 â Present | Agentic AI Developer | **Labelbox** (Remote) |
+| Nov 2025 â Feb 2026 | Senior AI Generalist | **Outlier** (Remote) |
+| Aug 2023 â Jan 2026 | Junior Data Scientist | **D'light Technologies** (London, UK) |
+| Dec 2021 â Aug 2022 | Technical Analyst Intern | **Deserve Industrial Automation** (Surat) |
 
 ---
 
-## Education
+## Skills
 
-- **MSc Artificial Intelligence** — London Metropolitan University *(Distinction)*
-- **BE Electronics & Communication Engineering** — GTU, India *(Distinction)*
+**AI / CV:** Python Â· PyTorch Â· TensorFlow Â· OpenCV Â· VideoMAE Â· SlowFast Â· YOLOv8 Â· Scikit-learn
+
+**Infra:** FastAPI Â· Docker Â· Kubernetes Â· PostgreSQL Â· Azure Â· AWS Â· MLflow Â· Git
+
+**Data:** NumPy Â· Pandas Â· Tableau Â· Power BI Â· SQL Â· R
 
 ---
 
@@ -97,9 +125,7 @@ Currently open to AI/ML engineering roles globally.
 
 <div align="center">
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=00c896&icon_color=00c896)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=priyansh1221&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=00c896)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=00c896&icon_color=00c896&count_private=true)
 
 </div>
 
@@ -107,8 +133,8 @@ Currently open to AI/ML engineering roles globally.
 
 <div align="center">
 
-*Open to AI/ML Engineering · Computer Vision · Agentic AI · Remote or Relocation*
+*Open to AI/ML Engineering Â· Computer Vision Â· Production AI Systems Â· Remote or Relocation*
 
-📧 1.priyannsh@gmail.com · 📍 Surat, Gujarat, India
+ð Surat, Gujarat, India &nbsp;Â·&nbsp; ð§ 1.priyannsh@gmail.com
 
 </div>
