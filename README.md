@@ -6,6 +6,15 @@ MSc Artificial Intelligence, London Metropolitan University, Distinction. Based 
 
 Currently focused on production ML quality, agentic workflows, and real-world deployment reliability.
 
+## Snapshot Metrics
+
+| Signal | Value |
+|---|---|
+| MSc AI Outcome | Distinction |
+| CV System Performance | 0.941 ROC-AUC · 93.3% accuracy |
+| False Alarm Rate (Chitr) | 2.7% |
+| Production Systems Shipped | 2 |
+
 ## Featured Repositories
 
 | Project | Focus | Link |
