@@ -4,7 +4,7 @@
 
 **AI Engineer who builds things that work in the real world, under real constraints.**
 
-MSc Artificial Intelligence (Distinction) Â· London Met &nbsp;|&nbsp; BE Electronics (Distinction) Â· GTU
+MSc Artificial Intelligence (Distinction) | London Met &nbsp;|&nbsp; BE Electronics (Distinction) | GTU
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/priyansh-1221)
 [![Email](https://img.shields.io/badge/Email-1.priyannsh%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:1.priyannsh@gmail.com)
@@ -16,7 +16,7 @@ MSc Artificial Intelligence (Distinction) Â· London Met &nbsp;|&nbsp; BE Elect
 
 ## How I think
 
-Most AI work lives in notebooks. Mine ships to real environments with real constraints â devices that might lose internet, businesses that cannot afford cloud bills, security systems where a false alarm at 3am means someone ignores the next real one.
+Most AI work lives in notebooks. Mine ships to real environments with real constraints -- devices that might lose internet, businesses that cannot afford cloud bills, security systems where a false alarm at 3am means someone ignores the next real one.
 
 My design process starts with **what breaks the system in production**, not what maximises the benchmark. That shapes every technical decision I make.
 
@@ -24,30 +24,30 @@ My design process starts with **what breaks the system in production**, not what
 
 ## Projects
 
-### Chitr â Real-Time Loss Prevention Platform
-*2025 â Present*
+### Chitr -- Real-Time Loss Prevention Platform
+*2025 -- Present*
 
 A multi-model video intelligence system for detecting violence and theft on live CCTV.
 
-**The hard problem was not accuracy â it was false alarms.**
+**The hard problem was not accuracy -- it was false alarms.**
 
 Security guards who get 20 false alerts per hour stop trusting the system. I designed explicitly for a 2.7% false alarm rate, not just raw accuracy.
 
 **Why two models?**
 
-VideoMAE (masked autoencoder transformer) understands global context across 16-frame windows. SlowFast R101 has two pathways â one for slow semantic content, one for fast motion bursts. They fail in *different situations*, so ensembling them catches what each misses alone. Result: **0.941 ROC-AUC Â· 93.3% accuracy** on real CCTV footage.
+VideoMAE (masked autoencoder transformer) understands global context across 16-frame windows. SlowFast R101 has two pathways -- one for slow semantic content, one for fast motion bursts. They fail in *different situations*, so ensembling them catches what each misses alone. Result: **0.941 ROC-AUC | 93.3% accuracy** on real CCTV footage.
 
 **Why two-stage inference?**
 
 A security guard needs to know *now*, not after a 3-second deep model run. So:
-- YOLOv8 detects each person â instant pose-based heuristic score in **<0.5s**
+- YOLOv8 detects each person --> instant pose-based heuristic score in **<0.5s**
 - VideoMAE runs asynchronously and updates the confidence score
 
 The guard sees something immediately. The accurate score arrives a moment later.
 
 **Why fully local?**
 
-CCTV footage contains footage of customers. Sending it to any cloud creates legal and privacy liability. The system runs entirely on-site â no data leaves the building.
+CCTV footage contains footage of customers. Sending it to any cloud creates legal and privacy liability. The system runs entirely on-site -- no data leaves the building.
 
 **Why active learning via PostgreSQL?**
 
@@ -56,13 +56,13 @@ Every human review correction gets written back as a training signal. The model 
 > Trained model checkpoints exist. This is a live system, not architecture code.
 
 ```
-Stack: Python Â· PyTorch Â· VideoMAE Â· SlowFast R101 Â· YOLOv8 Â· FastAPI Â· PostgreSQL Â· OpenCV Â· MLflow
+Stack: Python | PyTorch | VideoMAE | SlowFast R101 | YOLOv8 | FastAPI | PostgreSQL | OpenCV | MLflow
 ```
 
 ---
 
-### JalaSai Auto Garage â Production Business System
-*2024 â Present*
+### JalaSai Auto Garage -- Production Business System
+*2024 -- Present*
 
 A complete management system for an established two-wheeler repair garage in Surat, Gujarat, India.
 
@@ -70,7 +70,7 @@ A complete management system for an established two-wheeler repair garage in Sur
 
 The garage owner needed something that: works on a cheap Android phone, survives power cuts (offline = still works), costs nothing monthly, and can be updated by sending a WhatsApp message with the new file attached.
 
-That constraint â not preference â is why the entire system is a **single HTML file with zero dependencies**.
+That constraint -- not preference -- is why the entire system is a **single HTML file with zero dependencies**.
 
 **The QR encoder problem.**
 
@@ -78,22 +78,22 @@ The garage uses thermal printers for part sticker labels with QR codes. I needed
 
 **The SKU system is designed to be invented, not looked up.**
 
-Every part follows `{BIKE}-{CAT}-{VARIANT}` â e.g. `OLA-BRA-PAD-FRT` for the Ola Electric front brake pad. A mechanic can create a new SKU on the spot without training or a lookup table. The code describes itself.
+Every part follows `{BIKE}-{CAT}-{VARIANT}` -- e.g. `OLA-BRA-PAD-FRT` for the Ola Electric front brake pad. A mechanic can create a new SKU on the spot without training or a lookup table. The code describes itself.
 
-**WhatsApp over email â because I read the actual user.**
+**WhatsApp over email -- because I read the actual user.**
 
 The bill goes out as a WhatsApp message in Hindi/Hinglish, the way a garage owner actually texts a customer. Not a PDF. Not email. A warm, informal message that feels like it came from a person.
 
-**Google Sheets as the backend â because the owner already knows it.**
+**Google Sheets as the backend -- because the owner already knows it.**
 
 Rather than building a custom analytics dashboard requiring training, stock changes sync to Google Sheets via Apps Script. The owner already knows how to filter and sort in Sheets.
 
-**Commission on labour only â because that is how garages in India actually work.**
+**Commission on labour only -- because that is how garages in India actually work.**
 
 Parts are billed at cost to the customer. A mechanic earns a percentage of their skilled labour, not of the parts they bolt on. I learned this by sitting with the business owner.
 
 ```
-Stack: Vanilla HTML Â· CSS Â· JavaScript Â· localStorage Â· BarcodeDetector API Â· Browser Print API
+Stack: Vanilla HTML | CSS | JavaScript | localStorage | BarcodeDetector API | Browser Print API
 ```
 
 [![View Repo](https://img.shields.io/badge/View_Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/priyansh1221/JalaSai-Garage)
@@ -104,20 +104,20 @@ Stack: Vanilla HTML Â· CSS Â· JavaScript Â· localStorage Â· BarcodeDetec
 
 | Period | Role | Company |
 |--------|------|---------|
-| Jan 2026 â Present | Agentic AI Developer | **Labelbox** (Remote) |
-| Nov 2025 â Feb 2026 | Senior AI Generalist | **Outlier** (Remote) |
-| Aug 2023 â Jan 2026 | Junior Data Scientist | **D'light Technologies** (London, UK) |
-| Dec 2021 â Aug 2022 | Technical Analyst Intern | **Deserve Industrial Automation** (Surat) |
+| Jan 2026 -- Present | Agentic AI Developer | **Labelbox** (Remote) |
+| Nov 2025 -- Feb 2026 | Senior AI Generalist | **Outlier** (Remote) |
+| Aug 2023 -- Jan 2026 | Junior Data Scientist | **D'light Technologies** (London, UK) |
+| Dec 2021 -- Aug 2022 | Technical Analyst Intern | **Deserve Industrial Automation** (Surat) |
 
 ---
 
 ## Skills
 
-**AI / CV:** Python Â· PyTorch Â· TensorFlow Â· OpenCV Â· VideoMAE Â· SlowFast Â· YOLOv8 Â· Scikit-learn
+**AI / CV:** Python | PyTorch | TensorFlow | OpenCV | VideoMAE | SlowFast | YOLOv8 | Scikit-learn
 
-**Infra:** FastAPI Â· Docker Â· Kubernetes Â· PostgreSQL Â· Azure Â· AWS Â· MLflow Â· Git
+**Infra:** FastAPI | Docker | Kubernetes | PostgreSQL | Azure | AWS | MLflow | Git
 
-**Data:** NumPy Â· Pandas Â· Tableau Â· Power BI Â· SQL Â· R
+**Data:** NumPy | Pandas | Tableau | Power BI | SQL | R
 
 ---
 
@@ -133,8 +133,8 @@ Stack: Vanilla HTML Â· CSS Â· JavaScript Â· localStorage Â· BarcodeDetec
 
 <div align="center">
 
-*Open to AI/ML Engineering Â· Computer Vision Â· Production AI Systems Â· Remote or Relocation*
+*Open to AI/ML Engineering | Computer Vision | Production AI Systems | Remote or Relocation*
 
-ð Surat, Gujarat, India &nbsp;Â·&nbsp; ð§ 1.priyannsh@gmail.com
+Surat, Gujarat, India &nbsp; | &nbsp; 1.priyannsh@gmail.com
 
 </div>
