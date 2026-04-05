@@ -1,140 +1,55 @@
-<div align="center">
-
 # Priyansh Patel
 
-**AI Engineer who builds things that work in the real world, under real constraints.**
+AI Engineer. MSc Artificial Intelligence, London Metropolitan University (Distinction). Based in Surat, India.
 
-MSc Artificial Intelligence (Distinction) | London Met &nbsp;|&nbsp; BE Electronics (Distinction) | GTU
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/priyansh-1221)
-[![Email](https://img.shields.io/badge/Email-1.priyannsh%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:1.priyannsh@gmail.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-priyansh1221.github.io-000?style=flat-square&logo=github)](https://priyansh1221.github.io/Priyansh/)
-
-</div>
-
----
-
-## How I think
-
-Most AI work lives in notebooks. Mine ships to real environments with real constraints -- devices that might lose internet, businesses that cannot afford cloud bills, security systems where a false alarm at 3am means someone ignores the next real one.
-
-My design process starts with **what breaks the system in production**, not what maximises the benchmark. That shapes every technical decision I make.
+I've shipped two production systems from scratch: one runs on GPU servers in a retail environment, one runs in a browser tab with no internet connection. Both are live and in use.
 
 ---
 
 ## Projects
 
-### Chitr -- Real-Time Loss Prevention Platform
-*2025 -- Present*
+### Chitr &mdash; Real-Time Loss Prevention
 
-A multi-model video intelligence system for detecting violence and theft on live CCTV.
+Retail theft detection for a live deployment. Two models run in sequence: YOLOv8 scores body pose in under 500ms, and only if posture crosses a suspicion threshold does VideoMAE run async analysis on the full clip. The reason for this architecture is that false alarms are the actual business problem &mdash; every spurious alert that goes nowhere erodes trust in the system until someone turns it off. Keeping the fast model as a gate means VideoMAE only fires on real candidates, which is what pushed the false alarm rate down to 2.7%.
 
-**The hard problem was not accuracy -- it was false alarms.**
+The system runs locally, not in the cloud. Latency requirements made remote inference impractical for a live retail feed. MLflow tracks every training run. PostgreSQL collects the edge cases operators flag, which feed back into the next training cycle. The model improves from its own mistakes in production.
 
-Security guards who get 20 false alerts per hour stop trusting the system. I designed explicitly for a 2.7% false alarm rate, not just raw accuracy.
+**0.941 ROC-AUC &nbsp;&middot;&nbsp; 93.3% accuracy &nbsp;&middot;&nbsp; 2.7% false alarm rate**  
+PyTorch &nbsp;&middot;&nbsp; VideoMAE &nbsp;&middot;&nbsp; SlowFast R101 &nbsp;&middot;&nbsp; YOLOv8 &nbsp;&middot;&nbsp; FastAPI &nbsp;&middot;&nbsp; PostgreSQL &nbsp;&middot;&nbsp; MLflow
 
-**Why two models?**
-
-VideoMAE (masked autoencoder transformer) understands global context across 16-frame windows. SlowFast R101 has two pathways -- one for slow semantic content, one for fast motion bursts. They fail in *different situations*, so ensembling them catches what each misses alone. Result: **0.941 ROC-AUC | 93.3% accuracy** on real CCTV footage.
-
-**Why two-stage inference?**
-
-A security guard needs to know *now*, not after a 3-second deep model run. So:
-- YOLOv8 detects each person --> instant pose-based heuristic score in **<0.5s**
-- VideoMAE runs asynchronously and updates the confidence score
-
-The guard sees something immediately. The accurate score arrives a moment later.
-
-**Why fully local?**
-
-CCTV footage contains footage of customers. Sending it to any cloud creates legal and privacy liability. The system runs entirely on-site -- no data leaves the building.
-
-**Why active learning via PostgreSQL?**
-
-Every human review correction gets written back as a training signal. The model improves from every mistake a reviewer catches. This is the difference between a deployed AI system and a research project.
-
-> Trained model checkpoints exist. This is a live system, not architecture code.
-
-```
-Stack: Python | PyTorch | VideoMAE | SlowFast R101 | YOLOv8 | FastAPI | PostgreSQL | OpenCV | MLflow
-```
+Trained model checkpoints exist. This is a live system.
 
 ---
 
-### JalaSai Auto Garage -- Production Business System
-*2024 -- Present*
+### JalaSai Auto Garage &mdash; Production Business System
 
-A complete management system for an established two-wheeler repair garage in Surat, Gujarat, India.
+Full workshop management for an established two-wheeler repair business in Surat. Jobs, stock, mechanics, expenses, analytics, QR label printing, WhatsApp billing.
 
-**The deployment constraint came first.**
+The entire application is a single HTML file. No server, no npm, no build step. It runs from a USB drive if needed. LocalStorage is the database. The owner needed something that works on the shop floor without relying on internet, and that he could hand to a mechanic without any training overhead.
 
-The garage owner needed something that: works on a cheap Android phone, survives power cuts (offline = still works), costs nothing monthly, and can be updated by sending a WhatsApp message with the new file attached.
+The QR encoder is written from scratch in vanilla JS &mdash; a full Reed-Solomon implementation. No library because there was no CDN available offline and bundling a QR library into a single file without a build tool is more trouble than writing the encoder. Part SKUs follow a structured pattern (`OLA-BRA-PAD-FRT`) so mechanics can read them without looking up a reference. WhatsApp billing uses `wa.me` deep links with pre-filled messages in Hindi/Hinglish because that is the language the customers speak. Mechanic commission is calculated on labour (only), not parts, because that is how the business actually works.
 
-That constraint -- not preference -- is why the entire system is a **single HTML file with zero dependencies**.
-
-**The QR encoder problem.**
-
-The garage uses thermal printers for part sticker labels with QR codes. I needed QR generation that worked offline with no external library. I implemented the full **Reed-Solomon error correction + QR matrix encoding** algorithm from scratch in vanilla JS. No npm. No CDN. It lives inside the file.
-
-**The SKU system is designed to be invented, not looked up.**
-
-Every part follows `{BIKE}-{CAT}-{VARIANT}` -- e.g. `OLA-BRA-PAD-FRT` for the Ola Electric front brake pad. A mechanic can create a new SKU on the spot without training or a lookup table. The code describes itself.
-
-**WhatsApp over email -- because I read the actual user.**
-
-The bill goes out as a WhatsApp message in Hindi/Hinglish, the way a garage owner actually texts a customer. Not a PDF. Not email. A warm, informal message that feels like it came from a person.
-
-**Google Sheets as the backend -- because the owner already knows it.**
-
-Rather than building a custom analytics dashboard requiring training, stock changes sync to Google Sheets via Apps Script. The owner already knows how to filter and sort in Sheets.
-
-**Commission on labour only -- because that is how garages in India actually work.**
-
-Parts are billed at cost to the customer. A mechanic earns a percentage of their skilled labour, not of the parts they bolt on. I learned this by sitting with the business owner.
-
-```
-Stack: Vanilla HTML | CSS | JavaScript | localStorage | BarcodeDetector API | Browser Print API
-```
-
-[![View Repo](https://img.shields.io/badge/View_Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/priyansh1221/JalaSai-Garage)
+Vanilla JS &nbsp;&middot;&nbsp; localStorage &nbsp;&middot;&nbsp; BarcodeDetector API &nbsp;&middot;&nbsp; Browser Print API &nbsp;&middot;&nbsp; WhatsApp deep links
 
 ---
 
 ## Experience
 
 | Period | Role | Company |
-|--------|------|---------|
-| Jan 2026 -- Present | Agentic AI Developer | **Labelbox** (Remote) |
-| Nov 2025 -- Feb 2026 | Senior AI Generalist | **Outlier** (Remote) |
-| Aug 2023 -- Jan 2026 | Junior Data Scientist | **D'light Technologies** (London, UK) |
-| Dec 2021 -- Aug 2022 | Technical Analyst Intern | **Deserve Industrial Automation** (Surat) |
+|---|---|---|
+| Jan 2026 &ndash; Present | Agentic AI Developer | Labelbox |
+| Nov 2025 &ndash; Feb 2026 | Senior AI Generalist | Outlier |
+| Aug 2023 &ndash; Jan 2026 | Junior Data Scientist | D'light Technologies |
+| Sep 2022 &ndash; Sep 2023 | MSc Artificial Intelligence (Distinction) | London Metropolitan University |
+| Dec 2021 &ndash; Aug 2022 | Technical Analyst Intern | Deserve Industrial Automation |
+| Aug 2018 &ndash; May 2022 | BE Electronics & Communications (6.79 CGPA) | Gujarat Technological University |
 
 ---
 
 ## Skills
 
-**AI / CV:** Python | PyTorch | TensorFlow | OpenCV | VideoMAE | SlowFast | YOLOv8 | Scikit-learn
-
-**Infra:** FastAPI | Docker | Kubernetes | PostgreSQL | Azure | AWS | MLflow | Git
-
-**Data:** NumPy | Pandas | Tableau | Power BI | SQL | R
+Python &nbsp;&middot;&nbsp; PyTorch &nbsp;&middot;&nbsp; FastAPI &nbsp;&middot;&nbsp; PostgreSQL &nbsp;&middot;&nbsp; MLflow &nbsp;&middot;&nbsp; YOLOv8 &nbsp;&middot;&nbsp; VideoMAE &nbsp;&middot;&nbsp; Vanilla JS &nbsp;&middot;&nbsp; HTML/CSS &nbsp;&middot;&nbsp; Git &nbsp;&middot;&nbsp; Linux
 
 ---
 
-## GitHub Stats
-
-<div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=00c896&icon_color=00c896&count_private=true)
-
-</div>
-
----
-
-<div align="center">
-
-*Open to AI/ML Engineering | Computer Vision | Production AI Systems | Remote or Relocation*
-
-Surat, Gujarat, India &nbsp; | &nbsp; 1.priyannsh@gmail.com
-
-</div>
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true)](https://github.com/priyansh1221)
