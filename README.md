@@ -4,6 +4,16 @@ AI Engineer building production systems in computer vision, deep learning, and p
 
 MSc Artificial Intelligence, London Metropolitan University, Distinction. Based in Surat, India.
 
+Currently focused on production ML quality, agentic workflows, and real-world deployment reliability.
+
+## Featured Repositories
+
+| Project | Focus | Link |
+|---|---|---|
+| Chitr Showcase | Real-time loss prevention case study | https://github.com/priyansh1221/chitr-showcase |
+| Portfolio Website | Personal portfolio and project narrative | https://github.com/priyansh1221/Priyansh |
+| JalaSai Garage System | Offline-first business software | https://github.com/priyansh1221/jalasai-garage-system |
+
 ## What I Build
 
 - Production AI systems that survive real-world constraints
@@ -65,6 +75,6 @@ Python, SQL, PyTorch, TensorFlow, Keras, Scikit-Learn, OpenCV, VideoMAE, SlowFas
 
 - Email: 1.priyannsh@gmail.com
 - LinkedIn: https://www.linkedin.com/in/priyansh-1221/
-- Portfolio: https://github.com/priyansh1221/Priyansh
+- Portfolio: https://priyansh1221.github.io/Priyansh/
 
 [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true)](https://github.com/priyansh1221)
