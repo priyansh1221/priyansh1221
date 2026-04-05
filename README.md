@@ -1,55 +1,70 @@
 # Priyansh Patel
 
-AI Engineer. MSc Artificial Intelligence, London Metropolitan University (Distinction). Based in Surat, India.
+AI Engineer building production systems in computer vision, deep learning, and practical software for real environments.
 
-I've shipped two production systems from scratch: one runs on GPU servers in a retail environment, one runs in a browser tab with no internet connection. Both are live and in use.
+MSc Artificial Intelligence, London Metropolitan University, Distinction. Based in Surat, India.
 
----
+## What I Build
 
-## Projects
+- Production AI systems that survive real-world constraints
+- Computer vision pipelines with measurable accuracy and latency targets
+- Offline-first tools for businesses that cannot depend on cloud uptime
+- Full-stack ML backends with feedback loops, monitoring, and deployment discipline
 
-### Chitr &mdash; Real-Time Loss Prevention
+## Featured Work
 
-Retail theft detection for a live deployment. Two models run in sequence: YOLOv8 scores body pose in under 500ms, and only if posture crosses a suspicion threshold does VideoMAE run async analysis on the full clip. The reason for this architecture is that false alarms are the actual business problem &mdash; every spurious alert that goes nowhere erodes trust in the system until someone turns it off. Keeping the fast model as a gate means VideoMAE only fires on real candidates, which is what pushed the false alarm rate down to 2.7%.
+### Chitr - Real-Time Loss Prevention
 
-The system runs locally, not in the cloud. Latency requirements made remote inference impractical for a live retail feed. MLflow tracks every training run. PostgreSQL collects the edge cases operators flag, which feed back into the next training cycle. The model improves from its own mistakes in production.
+Retail theft detection system used in a live environment.
 
-**0.941 ROC-AUC &nbsp;&middot;&nbsp; 93.3% accuracy &nbsp;&middot;&nbsp; 2.7% false alarm rate**  
-PyTorch &nbsp;&middot;&nbsp; VideoMAE &nbsp;&middot;&nbsp; SlowFast R101 &nbsp;&middot;&nbsp; YOLOv8 &nbsp;&middot;&nbsp; FastAPI &nbsp;&middot;&nbsp; PostgreSQL &nbsp;&middot;&nbsp; MLflow
+- YOLOv8 gates the fast path in under 500 ms
+- VideoMAE and SlowFast R101 handle async clip analysis
+- PostgreSQL stores operator feedback for active learning
+- MLflow tracks training and evaluation runs
 
-Trained model checkpoints exist. This is a live system.
+Results:
 
----
+- 0.941 ROC-AUC
+- 93.3% accuracy
+- 2.7% false alarm rate
 
-### JalaSai Auto Garage &mdash; Production Business System
+Stack: PyTorch, VideoMAE, SlowFast R101, YOLOv8, FastAPI, PostgreSQL, MLflow, OpenCV
 
-Full workshop management for an established two-wheeler repair business in Surat. Jobs, stock, mechanics, expenses, analytics, QR label printing, WhatsApp billing.
+### JalaSai Garage System
 
-The entire application is a single HTML file. No server, no npm, no build step. It runs from a USB drive if needed. LocalStorage is the database. The owner needed something that works on the shop floor without relying on internet, and that he could hand to a mechanic without any training overhead.
+Offline-first garage management system for a live two-wheeler repair business.
 
-The QR encoder is written from scratch in vanilla JS &mdash; a full Reed-Solomon implementation. No library because there was no CDN available offline and bundling a QR library into a single file without a build tool is more trouble than writing the encoder. Part SKUs follow a structured pattern (`OLA-BRA-PAD-FRT`) so mechanics can read them without looking up a reference. WhatsApp billing uses `wa.me` deep links with pre-filled messages in Hindi/Hinglish because that is the language the customers speak. Mechanic commission is calculated on labour (only), not parts, because that is how the business actually works.
+- Single-file vanilla JS application
+- LocalStorage-backed workflow for resilience
+- QR label generation, stock, jobs, mechanics, expenses, analytics
+- WhatsApp billing in Hindi/Hinglish for daily operations
 
-Vanilla JS &nbsp;&middot;&nbsp; localStorage &nbsp;&middot;&nbsp; BarcodeDetector API &nbsp;&middot;&nbsp; Browser Print API &nbsp;&middot;&nbsp; WhatsApp deep links
-
----
+Stack: Vanilla JS, HTML/CSS, localStorage, BarcodeDetector API, Browser Print API, WhatsApp deep links
 
 ## Experience
 
 | Period | Role | Company |
 |---|---|---|
-| Jan 2026 &ndash; Present | Agentic AI Developer | Labelbox |
-| Nov 2025 &ndash; Feb 2026 | Senior AI Generalist | Outlier |
-| Aug 2023 &ndash; Jan 2026 | Junior Data Scientist | D'light Technologies |
-| Sep 2022 &ndash; Sep 2023 | MSc Artificial Intelligence (Distinction) | London Metropolitan University |
-| Dec 2021 &ndash; Aug 2022 | Technical Analyst Intern | Deserve Industrial Automation |
-| Aug 2018 &ndash; May 2022 | BE Electronics & Communications (6.79 CGPA) | Gujarat Technological University |
+| Jan 2026 - Present | Agentic AI Developer | Labelbox |
+| Nov 2025 - Feb 2026 | Senior AI Generalist | Outlier |
+| Aug 2023 - Jan 2026 | Junior Data Scientist | D'light Technologies |
+| Dec 2021 - Aug 2022 | Technical Analyst Intern | Deserve Industrial Automation |
 
----
+## Education
+
+| Degree | Institution |
+|---|---|
+| MSc Artificial Intelligence, Distinction | London Metropolitan University |
+| BE Electronics & Communications | Gujarat Technological University |
 
 ## Skills
 
-Python &nbsp;&middot;&nbsp; PyTorch &nbsp;&middot;&nbsp; FastAPI &nbsp;&middot;&nbsp; PostgreSQL &nbsp;&middot;&nbsp; MLflow &nbsp;&middot;&nbsp; YOLOv8 &nbsp;&middot;&nbsp; VideoMAE &nbsp;&middot;&nbsp; Vanilla JS &nbsp;&middot;&nbsp; HTML/CSS &nbsp;&middot;&nbsp; Git &nbsp;&middot;&nbsp; Linux
+Python, SQL, PyTorch, TensorFlow, Keras, Scikit-Learn, OpenCV, VideoMAE, SlowFast, YOLOv8, FastAPI, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, Azure, AWS, MLflow, Git, Linux, HTML/CSS, Vanilla JS
 
----
+## Contact
+
+- Email: 1.priyannsh@gmail.com
+- LinkedIn: https://www.linkedin.com/in/priyansh-1221/
+- Portfolio: https://github.com/priyansh1221/Priyansh
 
 [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true)](https://github.com/priyansh1221)
