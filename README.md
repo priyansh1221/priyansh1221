@@ -1,89 +1,71 @@
 # Priyansh Patel
 
-AI Engineer building production systems in computer vision, deep learning, and practical software for real environments.
+**AI Engineer** | Production ML · Computer Vision · Real-time Systems  
+MSc AI (Distinction, London Met) | Surat, India
 
-MSc Artificial Intelligence, London Metropolitan University, Distinction. Based in Surat, India.
+---
 
-Currently focused on production ML quality, agentic workflows, and real-world deployment reliability.
+## 🎯 What I ship
+- **Production AI systems** that work reliably at scale
+- **Computer vision pipelines** with measurable accuracy (93%+ accuracy, <2.7% false alarm rates)
+- **Real-time applications** spanning retail loss-prevention, business automation, and interview assistance
+- **Offline-first software** for environments where cloud uptime ≠ business uptime
 
-## Snapshot Metrics
+---
 
-| Signal | Value |
-|---|---|
-| MSc AI Outcome | Distinction |
-| CV System Performance | 0.941 ROC-AUC · 93.3% accuracy |
-| False Alarm Rate (Chitr) | 2.7% |
-| Production Systems Shipped | 2 |
+## 🚀 Recent Projects
 
-## Featured Repositories
+### **YesMate! - AI Interview Helper**
+Real-time AI co-pilot that transcribes live interviews and streams contextual answers directly to your screen—invisible to screen-share recordings.
 
-| Project | Focus | Link |
-|---|---|---|
-| Chitr Showcase | Real-time loss prevention case study | https://github.com/priyansh1221/chitr-showcase |
-| Portfolio Website | Personal portfolio and project narrative | https://github.com/priyansh1221/Priyansh |
-| JalaSai Garage System | Offline-first business software | https://github.com/priyansh1221/jalasai-garage-system |
+**Key Features:** Sub-second response latency · Resume-aware suggestions · Screen-share private mode · Zero API costs  
+**Stack:** Electron · ScreenCaptureKit · Groq Whisper + Llama · Node.js  
+→ [View on GitHub](https://github.com/priyansh1221/yesmate-ai-interview-helper)
 
-## What I Build
+### **Chitr - Real-Time Loss Prevention**
+Retail theft detection system deployed in live environments with production-grade performance monitoring.
 
-- Production AI systems that survive real-world constraints
-- Computer vision pipelines with measurable accuracy and latency targets
-- Offline-first tools for businesses that cannot depend on cloud uptime
-- Full-stack ML backends with feedback loops, monitoring, and deployment discipline
+**Results:** 0.941 ROC-AUC · 93.3% accuracy · 2.7% false alarm rate  
+**Stack:** YOLOv8 · VideoMAE · SlowFast R101 · FastAPI · PostgreSQL · MLflow  
+→ [Case Study](https://github.com/priyansh1221/chitr-showcase)
 
-## Featured Work
+### **JalaSai Garage System**
+Offline-first management tool for a live two-wheeler repair business. Single-file architecture, zero cloud dependency.
 
-### Chitr - Real-Time Loss Prevention
+**Features:** QR label generation · Inventory tracking · Mechanics workflow · WhatsApp billing (Hindi/Hinglish)  
+**Stack:** Vanilla JS · LocalStorage · Browser APIs  
+→ [View on GitHub](https://github.com/priyansh1221/jalasai-garage-system)
 
-Retail theft detection system used in a live environment.
+---
 
-- YOLOv8 gates the fast path in under 500 ms
-- VideoMAE and SlowFast R101 handle async clip analysis
-- PostgreSQL stores operator feedback for active learning
-- MLflow tracks training and evaluation runs
+## 💼 Experience
+| Role | Company | Period |
+|------|---------|--------|
+| **Agentic AI Developer** | Labelbox | Jan 2026 – Present |
+| **Senior AI Generalist** | Outlier | Nov 2025 – Feb 2026 |
+| **Junior Data Scientist** | D'light Technologies | Aug 2023 – Jan 2026 |
 
-Results:
+---
 
-- 0.941 ROC-AUC
-- 93.3% accuracy
-- 2.7% false alarm rate
+## 🛠️ Tech Stack
+**Core:** Python · PyTorch · SQL · FastAPI  
+**CV:** OpenCV · YOLOv8 · VideoMAE · SlowFast  
+**Backend:** PostgreSQL · MongoDB · Docker · Kubernetes  
+**Cloud:** AWS · Azure · MLflow  
+**Frontend:** JavaScript · HTML/CSS · React  
 
-Stack: PyTorch, VideoMAE, SlowFast R101, YOLOv8, FastAPI, PostgreSQL, MLflow, OpenCV
+---
 
-### JalaSai Garage System
+## 📊 By the numbers
+- **0.941** ROC-AUC (Chitr CV system)
+- **93.3%** accuracy on real footage
+- **2.7%** false alarm rate (retail deployment)
+- **2** production ML systems shipped
+- **MSc Distinction** in AI
 
-Offline-first garage management system for a live two-wheeler repair business.
+---
 
-- Single-file vanilla JS application
-- LocalStorage-backed workflow for resilience
-- QR label generation, stock, jobs, mechanics, expenses, analytics
-- WhatsApp billing in Hindi/Hinglish for daily operations
-
-Stack: Vanilla JS, HTML/CSS, localStorage, BarcodeDetector API, Browser Print API, WhatsApp deep links
-
-## Experience
-
-| Period | Role | Company |
-|---|---|---|
-| Jan 2026 - Present | Agentic AI Developer | Labelbox |
-| Nov 2025 - Feb 2026 | Senior AI Generalist | Outlier |
-| Aug 2023 - Jan 2026 | Junior Data Scientist | D'light Technologies |
-| Dec 2021 - Aug 2022 | Technical Analyst Intern | Deserve Industrial Automation |
-
-## Education
-
-| Degree | Institution |
-|---|---|
-| MSc Artificial Intelligence, Distinction | London Metropolitan University |
-| BE Electronics & Communications | Gujarat Technological University |
-
-## Skills
-
-Python, SQL, PyTorch, TensorFlow, Keras, Scikit-Learn, OpenCV, VideoMAE, SlowFast, YOLOv8, FastAPI, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, Azure, AWS, MLflow, Git, Linux, HTML/CSS, Vanilla JS
-
-## Contact
-
-- Email: 1.priyannsh@gmail.com
-- LinkedIn: https://www.linkedin.com/in/priyansh-1221/
-- Portfolio: https://priyansh1221.github.io/Priyansh/
-
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=priyansh1221&show_icons=true&theme=dark&hide_border=true)](https://github.com/priyansh1221)
+## 📫 Get in touch
+**Email:** 1.priyannsh@gmail.com  
+**LinkedIn:** [linkedin.com/in/priyansh-1221](https://www.linkedin.com/in/priyansh-1221/)  
+**Portfolio:** [priyansh1221.github.io](https://priyansh1221.github.io/Priyansh/)
