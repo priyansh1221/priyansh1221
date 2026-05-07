@@ -1,71 +1,73 @@
 # Priyansh Patel
 
-**AI Engineer** | Production ML · Computer Vision · Real-time Systems  
-MSc AI (Distinction, London Met) 
+AI engineer shipping agentic systems, production ML, and practical software for real-world operations.
 
----
+MSc Artificial Intelligence with Distinction. Current work spans agentic evaluation workflows, production computer vision, and software built for environments where latency, reliability, and operator trust matter.
 
-## 🎯 What I ship
-- **Production AI systems** that work reliably at scale
-- **Computer vision pipelines** with measurable accuracy (93%+ accuracy, <2.7% false alarm rates)
-- **Real-time applications** spanning retail loss-prevention, business automation, and interview assistance
-- **Offline-first software** for environments where cloud uptime ≠ business uptime
+## What I Ship
 
----
+- Agentic AI workflows and evaluation systems for multi-step reasoning tasks
+- Production ML and computer vision pipelines with measurable field performance
+- Real-time desktop AI experiences with tight latency and privacy constraints
+- Offline-first business software built for daily operational use
 
-## 🚀 Recent Projects
+## Selected Work
 
-### **YesMate! - AI Interview Helper**
-Real-time AI co-pilot that transcribes live interviews and streams contextual answers directly to your screen—invisible to screen-share recordings.
+### Chitr
 
-**Key Features:** Sub-second response latency · Resume-aware suggestions · Screen-share private mode · Zero API costs  
-**Stack:** Electron · ScreenCaptureKit · Groq Whisper + Llama · Node.js  
-→ [View on GitHub](https://github.com/priyansh1221/yesmate-ai-interview-helper)
+Real-time retail loss-prevention system designed for live RTSP feeds and low false-alarm operations.
 
-### **Chitr - Real-Time Loss Prevention**
-Retail theft detection system deployed in live environments with production-grade performance monitoring.
+- 0.941 ROC-AUC
+- 93.3% accuracy on real footage
+- 2.7% false alarm rate
+- Multi-stage inference: motion gate, fast pose scoring, asynchronous video models, operator feedback loop
 
-**Results:** 0.941 ROC-AUC · 93.3% accuracy · 2.7% false alarm rate  
-**Stack:** YOLOv8 · VideoMAE · SlowFast R101 · FastAPI · PostgreSQL · MLflow  
-→ [Case Study](https://github.com/priyansh1221/chitr-showcase)
+### JalaSai Garage System
 
-### **JalaSai Garage System**
-Offline-first management tool for a live two-wheeler repair business. Single-file architecture, zero cloud dependency.
+Offline-first workshop operations platform used in live two-wheeler servicing workflows.
 
-**Features:** QR label generation · Inventory tracking · Mechanics workflow · WhatsApp billing (Hindi/Hinglish)  
-**Stack:** Vanilla JS · LocalStorage · Browser APIs  
-→ [View on GitHub](https://github.com/priyansh1221/jalasai-garage-system)
+- Daily workflow support for invoicing, stock, mechanics, and reminders
+- Fast mobile-first UI for shop-floor usage
+- Local-first interaction model with cloud sync where needed
 
----
+### Mapinion
 
-## 💼 Experience
-| Role | Company | Period |
-|------|---------|--------|
-| **Agentic AI Developer** | Labelbox | Jan 2026 – Present |
-| **Senior AI Generalist** | Outlier | Nov 2025 – Feb 2026 |
-| **Junior Data Scientist** | D'light Technologies | Aug 2023 – Jan 2026 |
+Live SaaS product at [mapinion.in](https://mapinion.in) where local businesses can subscribe, buy plans, and turn one printed QR into a guided review-growth system.
 
----
+- Guided customer flow with editable review suggestions
+- Fixed QR architecture that survives business preference changes
+- Owner dashboard and operational controls for review inventory
+- Paid plans and direct website purchase flow for business customers
 
-## 🛠️ Tech Stack
-**Core:** Python · PyTorch · SQL · FastAPI  
-**CV:** OpenCV · YOLOv8 · VideoMAE · SlowFast  
-**Backend:** PostgreSQL · MongoDB · Docker · Kubernetes  
-**Cloud:** AWS · Azure · MLflow  
-**Frontend:** JavaScript · HTML/CSS · React  
+### YesMate
 
----
+Low-latency desktop AI assistant for live spoken workflows, contextual suggestions, and privacy-aware overlay design.
 
-## 📊 By the numbers
-- **0.941** ROC-AUC (Chitr CV system)
-- **93.3%** accuracy on real footage
-- **2.7%** false alarm rate (retail deployment)
-- **2** production ML systems shipped
-- **MSc Distinction** in AI
+- Sub-second response flow
+- Real-time audio capture and transcript-to-suggestion pipeline
+- Context injection and on-screen assistance for high-pressure conversations
+- Overlay/privacy mechanics engineered for user control and separation from meeting content
 
----
+## Proof Points
 
-## 📫 Get in touch
-**Email:** 1.priyannsh@gmail.com  
-**LinkedIn:** [linkedin.com/in/priyansh-1221](https://www.linkedin.com/in/priyansh-1221/)  
-**Portfolio:** [priyansh1221.github.io](https://priyansh1221.github.io/Priyansh/)
+- Built production systems across computer vision, business operations, and real-time AI assistance
+- Shipped software for live environments where uptime, speed, and operator trust are non-negotiable
+- Comfortable across model behavior, backend systems, and product-facing workflow design
+
+## Current Focus
+
+- Agentic workflows
+- Evaluation and human feedback systems
+- Applied ML infrastructure
+- Low-latency AI product experiences
+
+## Labs and Experiments
+
+- `AI`: internal prototyping around AI tooling and applied workflows
+- `Bet`: product and growth experiments kept secondary to the main engineering story
+
+## Contact
+
+- Email: `1.priyannsh@gmail.com`
+- LinkedIn: [linkedin.com/in/priyansh-1221](https://www.linkedin.com/in/priyansh-1221/)
+- Portfolio: [priyansh1221.github.io/Priyansh](https://priyansh1221.github.io/Priyansh/)
