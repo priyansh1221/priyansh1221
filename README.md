@@ -1,7 +1,7 @@
 # Priyansh Patel
 
 **AI Engineer** | Production ML · Computer Vision · Real-time Systems  
-MSc AI (Distinction, London Met) | Surat, India
+MSc AI (Distinction, London Met) 
 
 ---
 
